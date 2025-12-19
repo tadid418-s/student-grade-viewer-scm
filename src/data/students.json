@@ -1,0 +1,119 @@
+{
+  "students": [
+    {
+      "id": "ETS1234/15",
+      "name": "Tadiyos",
+      "major": "Computer Science",
+      "semester": "Year 2, Semester 1",
+      "grades": [
+        {
+          "subject": "Mathematics for CS",
+          "code": "MATH101",
+          "credits": 4,
+          "grade": "A",
+          "color": "green"
+        },
+        {
+          "subject": "Intro to Algorithms",
+          "code": "CS102",
+          "credits": 4,
+          "grade": "A-",
+          "color": "green"
+        },
+        {
+          "subject": "Database Systems",
+          "code": "CS201",
+          "credits": 3,
+          "grade": "B+",
+          "color": "blue"
+        },
+        {
+          "subject": "Web Development",
+          "code": "CS205",
+          "credits": 3,
+          "grade": "A",
+          "color": "green"
+        },
+        {
+          "subject": "Ethics in Technology",
+          "code": "PHIL101",
+          "credits": 2,
+          "grade": "P",
+          "color": "gray"
+        }
+      ]
+    },
+    {
+      "id": "ETS5678/15",
+      "name": "Abebe Kebede",
+      "major": "Software Engineering",
+      "semester": "Year 3, Semester 2",
+      "grades": [
+        {
+          "subject": "Advanced Java",
+          "code": "SE301",
+          "credits": 4,
+          "grade": "B",
+          "color": "blue"
+        },
+        {
+          "subject": "Software Architecture",
+          "code": "SE305",
+          "credits": 3,
+          "grade": "A",
+          "color": "green"
+        },
+        {
+          "subject": "Statistics",
+          "code": "STAT201",
+          "credits": 3,
+          "grade": "C+",
+          "color": "yellow"
+        },
+        {
+          "subject": "Project Management",
+          "code": "MGMT401",
+          "credits": 2,
+          "grade": "A-",
+          "color": "green"
+        }
+      ]
+    },
+    {
+      "id": "ETS9012/15",
+      "name": "Sara Mohammed",
+      "major": "Information Systems",
+      "semester": "Year 1, Semester 2",
+      "grades": [
+        {
+          "subject": "Intro to IS",
+          "code": "IS101",
+          "credits": 3,
+          "grade": "A",
+          "color": "green"
+        },
+        {
+          "subject": "Programming I",
+          "code": "CS101",
+          "credits": 4,
+          "grade": "B+",
+          "color": "blue"
+        },
+        {
+          "subject": "Calculus I",
+          "code": "MATH101",
+          "credits": 4,
+          "grade": "B",
+          "color": "blue"
+        },
+        {
+          "subject": "English Composition",
+          "code": "ENGL101",
+          "credits": 3,
+          "grade": "A",
+          "color": "green"
+        }
+      ]
+    }
+  ]
+}
