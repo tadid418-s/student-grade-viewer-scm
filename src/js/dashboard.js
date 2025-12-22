@@ -29,7 +29,7 @@ function renderStudentInfo() {
     const studentIdElement = document.getElementById('student-id');
     if (studentIdElement) {
         // Random ID for demo purposes
-        const randomId = 'UGR/' + Math.floor(1000 + Math.random() * 9000) + '/12';
+        const randomId = 'ETS' + Math.floor(1000 + Math.random() * 9000) + '/14';
         studentIdElement.textContent = randomId;
     }
 }

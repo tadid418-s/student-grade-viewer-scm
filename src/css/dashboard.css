@@ -233,8 +233,8 @@ body {
     height: 20vh;
     /* Notion covers are usually around this height */
     min-height: 140px;
-    background: linear-gradient(135deg, #FF9A9E 0%, #FECFEF 99%, #FECFEF 100%);
-    /* Nice gradient placeholder */
+    background: linear-gradient(135deg, #a1c4fd 0%, #c2e9fb 100%);
+    /* Bluish gradient */
     background-size: cover;
     background-position: center;
     width: 100%;
