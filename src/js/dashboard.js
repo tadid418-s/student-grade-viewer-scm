@@ -3,14 +3,16 @@
  * Handles data rendering for the student dashboard
  */
 
+// Simulate logged-in user (In a real app, this comes from localStorage/session)
+const CURRENT_USER_ID = "ETS1234/15";
+
 document.addEventListener('DOMContentLoaded', () => {
     initDashboard();
 });
 
 function initDashboard() {
-    renderStudentInfo();
-    renderGrades();
     setupMobileToggle();
+    fetchStudentData(CURRENT_USER_ID);
 }
 
 function setupMobileToggle() {
@@ -24,71 +26,58 @@ function setupMobileToggle() {
     }
 }
 
-function renderStudentInfo() {
-    // Simulate fetching user ID
-    const studentIdElement = document.getElementById('student-id');
-    if (studentIdElement) {
-        // Random ID for demo purposes
-        const randomId = 'UGR/' + Math.floor(1000 + Math.random() * 9000) + '/12';
-        studentIdElement.textContent = randomId;
+async function fetchStudentData(targetId) {
+    try {
+        const response = await fetch('data/students.json');
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        const data = await response.json();
+
+        const student = data.students.find(s => s.id === targetId);
+
+        if (student) {
+            renderDashboard(student);
+        } else {
+            console.error('Student not found');
+            showError('Student not found');
+        }
+    } catch (error) {
+        console.error('Error fetching data:', error);
+        showError('Failed to load data');
     }
 }
 
-function renderGrades() {
+function renderDashboard(student) {
+    // Render Student Info
+    document.querySelector('.user-name').textContent = student.name;
+
+    const nameEl = document.querySelector('.detail-row .value'); // First value is name
+    if (nameEl) nameEl.textContent = student.name;
+
+    const idEl = document.getElementById('student-id');
+    if (idEl) idEl.textContent = student.id;
+
+    const majorParent = idEl ? idEl.closest('.profile-details') : null;
+    if (majorParent) {
+        // Assuming specific structure or finding by label would be more robust, 
+        // but simplified here for the current HTML structure:
+        const majorEl = majorParent.querySelectorAll('.value')[2];
+        if (majorEl) majorEl.textContent = student.major;
+    }
+
+    // Render Grades
     const gradeBoard = document.getElementById('grade-board');
     if (!gradeBoard) return;
 
-    // Mock Data
-    const grades = [
-        {
-            subject: 'Mathematics for CS',
-            code: 'MATH101',
-            credits: 4,
-            grade: 'A',
-            color: 'green'
-        },
-        {
-            subject: 'Intro to Algorithms',
-            code: 'CS102',
-            credits: 4,
-            grade: 'A-',
-            color: 'green'
-        },
-        {
-            subject: 'Database Systems',
-            code: 'CS201',
-            credits: 3,
-            grade: 'B+',
-            color: 'blue'
-        },
-        {
-            subject: 'Web Development',
-            code: 'CS205',
-            credits: 3,
-            grade: 'A',
-            color: 'green'
-        },
-        {
-            subject: 'Ethics in Technology',
-            code: 'PHIL101',
-            credits: 2,
-            grade: 'P',
-            color: 'gray'
-        },
-        {
-            subject: 'Physics I',
-            code: 'PHYS101',
-            credits: 3,
-            grade: 'C+',
-            color: 'yellow'
-        }
-    ];
+    gradeBoard.innerHTML = ''; // Clear loading
 
-    // Clear loading placeholder
-    gradeBoard.innerHTML = '';
+    if (student.grades.length === 0) {
+        gradeBoard.innerHTML = '<div class="no-grades">No grades available.</div>';
+        return;
+    }
 
-    // Render Cards
-    grades.forEach(course => {
+    student.grades.forEach(course => {
         const card = document.createElement('div');
         card.className = 'grade-card';
 
@@ -98,7 +87,7 @@ function renderGrades() {
         if (course.grade.startsWith('B')) gradeColorClass = 'bg-blue';
         if (course.grade.startsWith('C')) gradeColorClass = 'bg-yellow';
         if (course.grade.startsWith('D') || course.grade.startsWith('F')) gradeColorClass = 'bg-red';
-        if (course.color) gradeColorClass = `bg-${course.color}`; // Override if specified in data
+        if (course.color) gradeColorClass = `bg-${course.color}`;
 
         card.innerHTML = `
             <div class="grade-card-title">${course.subject}</div>
@@ -121,4 +110,11 @@ function renderGrades() {
 
         gradeBoard.appendChild(card);
     });
+}
+
+function showError(message) {
+    const gradeBoard = document.getElementById('grade-board');
+    if (gradeBoard) {
+        gradeBoard.innerHTML = `<div class="error-message">${message}</div>`;
+    }
 }
