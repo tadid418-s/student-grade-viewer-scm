@@ -26,15 +26,6 @@ function setupMobileToggle() {
     }
 }
 
-<<<<<<< HEAD
-function renderStudentInfo() {
-    // Simulate fetching user ID
-    const studentIdElement = document.getElementById('student-id');
-    if (studentIdElement) {
-        // Random ID for demo purposes
-        const randomId = 'ETS' + Math.floor(1000 + Math.random() * 9000) + '/14';
-        studentIdElement.textContent = randomId;
-=======
 async function fetchStudentData(targetId) {
     try {
         const response = await fetch('data/students.json');
@@ -54,7 +45,6 @@ async function fetchStudentData(targetId) {
     } catch (error) {
         console.error('Error fetching data:', error);
         showError('Failed to load data');
->>>>>>> b376e5a21bf81033b458b2cd0e95a82c1b1e537f
     }
 }
 
