@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Student Grades</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/grades.css">
+</head>
+<body>
+
+    <div class="grades-container">
+
+        <!-- Page Title -->
+        <h1 class="page-title">Student Grades</h1>
+
+        <!-- Grades Card -->
+        <div class="card">
+            <div class="table-wrapper">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Course Code</th>
+                            <th>Course Name</th>
+                            <th>Credit Hours</th>
+                            <th>Letter Grade</th>
+                            <th>GPA</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Dynamically populated by grades.js -->
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- GPA Summary -->
+            <p style="margin-top:16px; font-weight:600;">
+                Semester GPA: <span id="gpa-value">0.00</span> / 4.00
+            </p>
+        </div>
+
+        <!-- Actions -->
+        <div class="actions">
+            <button class="button" onclick="goToDashboard()">
+                Return to Dashboard
+            </button>
+        </div>
+
+    </div>
+
+    <script src="js/grades.js"></script>
+</body>
+</html>
