@@ -29,7 +29,9 @@ document.addEventListener("DOMContentLoaded", () => {
             return;
         }
 
-        alert("Login successful (validation passed).");
+        // alert("Login successful (validation passed).");
+        sessionStorage.setItem("isLoggedIn", "true");
+        window.location.href = "dashboard.html";
         form.reset();
     });
 });

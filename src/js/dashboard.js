@@ -3,6 +3,10 @@
  * Handles data rendering for the student dashboard
  */
 
+if (sessionStorage.getItem("isLoggedIn") !== "true") {
+    window.location.href = "login.html";
+}
+
 // Simulate logged-in user (In a real app, this comes from localStorage/session)
 const CURRENT_USER_ID = "ETS1234/15";
 
@@ -12,6 +16,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 function initDashboard() {
     setupMobileToggle();
+    setupLogout();
     fetchStudentData(CURRENT_USER_ID);
 }
 
@@ -22,6 +27,17 @@ function setupMobileToggle() {
     if (toggleBtn && sidebar) {
         toggleBtn.addEventListener('click', () => {
             sidebar.classList.toggle('open');
+        });
+    }
+}
+
+function setupLogout() {
+    const logoutBtn = document.querySelector('.logout');
+    if (logoutBtn) {
+        logoutBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            sessionStorage.removeItem("isLoggedIn");
+            window.location.href = "login.html";
         });
     }
 }
