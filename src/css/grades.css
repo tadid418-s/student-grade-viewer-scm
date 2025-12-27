@@ -20,13 +20,14 @@
 /* =========================
    Page Layout
    ========================= */
-body {
+/* Body styles handled by dashboard.css */
+/* body {
     font-family: var(--font-stack);
     background-color: var(--bg-main);
     color: var(--text-primary);
     line-height: 1.5;
     padding: 32px;
-}
+} */
 
 /* Centered Content */
 .grades-container {
@@ -52,7 +53,7 @@ body {
     border: 1px solid var(--border-color);
     border-radius: 6px;
     padding: 16px;
-    box-shadow: 0 1px 2px rgba(0,0,0,0.04);
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04);
 }
 
 /* =========================
@@ -72,7 +73,8 @@ thead {
     background-color: #F7F7F7;
 }
 
-th, td {
+th,
+td {
     text-align: left;
     padding: 12px;
     border-bottom: 1px solid var(--border-color);
@@ -148,7 +150,8 @@ tbody tr:hover {
         font-size: 24px;
     }
 
-    th, td {
+    th,
+    td {
         padding: 10px;
     }
 }

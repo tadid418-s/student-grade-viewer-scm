@@ -1,4 +1,7 @@
-document.addEventListener("DOMContentLoaded", loadStudentGrades);
+document.addEventListener("DOMContentLoaded", () => {
+  loadStudentGrades();
+  setupMobileToggle();
+});
 
 /* =========================
    Load JSON & Render Grades
@@ -90,4 +93,15 @@ function displayGPA(gpa) {
 
 function goToDashboard() {
   window.location.href = "dashboard.html";
+}
+
+function setupMobileToggle() {
+  const toggleBtn = document.getElementById('mobile-toggle');
+  const sidebar = document.getElementById('sidebar');
+
+  if (toggleBtn && sidebar) {
+    toggleBtn.addEventListener('click', () => {
+      sidebar.classList.toggle('open');
+    });
+  }
 }
